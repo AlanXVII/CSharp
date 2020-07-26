@@ -7,6 +7,17 @@ namespace Play
     public class Person
     {
         public string Name;
+        private DateTime _birthDate;
+
+        public void SetBirthDate(DateTime birthdate)
+        {
+            _birthDate = birthdate;
+        }
+
+        public DateTime GetBirthDate()
+        {
+            return _birthDate;
+        }
 
         public void Introduce(string to)
         {
