@@ -6,22 +6,18 @@ namespace ExerciseOne
 {
     class MyStopWatch
     {
-        private DateTime _startTime;
-        private DateTime _stopTime;
+        public DateTime StartTime { get; private set; }
+        public DateTime StopTime { get; private set; }
+
         private TimeSpan _timeElapsed;
         private bool _started;
         private bool _stopped;
-
-        public MyStopWatch()
-        {
-
-        }
        
         public void Start()
         {
             if (_started == false)
             {
-                _startTime = DateTime.Now;
+                StartTime = DateTime.Now;
                 _started = true;
                 _stopped = false;
             }
@@ -35,7 +31,7 @@ namespace ExerciseOne
         {
             if (_started == true & _stopped == false)
             {
-                _stopTime = DateTime.Now;
+                StopTime = DateTime.Now;
                 _stopped = true;
                 _started = false;
             }
@@ -50,8 +46,8 @@ namespace ExerciseOne
         {
             if (_stopped == true)
             {
-                _stopTime = DateTime.MinValue;
-                _startTime = DateTime.MinValue;
+                StopTime = DateTime.MinValue;
+                StartTime = DateTime.MinValue;
             }
             else if (_stopped == false & _started == true)
             {
@@ -67,7 +63,7 @@ namespace ExerciseOne
             }
             else if (_stopped == true)
             {
-                _timeElapsed = _stopTime - _startTime;
+                _timeElapsed = StopTime - StartTime;
                 _stopped = false;
             }
             return _timeElapsed;
