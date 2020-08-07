@@ -68,7 +68,7 @@ namespace UDFLib
         }
 
         [ExcelFunction(Name = "Utils.SubtractBusDays", Description = "Subtracts number of Business Days from specific date and return date")]
-        public static Date SubtractBusDays([ExcelArgument("Supplied Date")] DateTime cur_date, [ExcelArgument("Number of Days")] int days)
+        public static DateTime SubtractBusDays([ExcelArgument("Supplied Date")] DateTime cur_date, [ExcelArgument("Number of Days")] int days)
         {
             for (int iter = 0; iter <= days; iter++)
             {
@@ -87,25 +87,30 @@ namespace UDFLib
         public static bool IsBusDay([ExcelArgument("Supplied Date")] DateTime inputdate)
         {
             //creating a dictionary using collection-initializer syntax
-            bool isbusday;
-            IList<DateTime> holidays = new List<DateTime>()
+            bool isbusday = false;
+            IList<DateTime> zar_holidays_2020 = new List<DateTime>()
             {
-                new DateTime(1,1,2020), new DateTime(1,2,2020)
-            };           
+                new DateTime(2020,1,1), new DateTime(2020,1,2)
+            };
 
-            switch (inputdate.DayOfWeek)
+            DayOfWeek dayofweek = inputdate.DayOfWeek;
+
+            switch (dayofweek)
             {
-                case DayOfWeek.Saturday | DayOfWeek.Sunday:
+                case DayOfWeek.Saturday:
+                    isbusday = false;
+                    break;
+                case DayOfWeek.Sunday:
                     isbusday = false;
                     break;
                 default:
-                    isbusday = true;
+                    foreach (DateTime day in zar_holidays_2020)
+                        if (inputdate.Date == day.Date)
+                            isbusday = false;
+                        else
+                            isbusday = true;
                     break;
-            }
-
-            foreach (DateTime day in holidays)
-                if (inputdate.Date == day.Date)
-                    isbusday = false;
+            }          
             
             return isbusday;
         }
