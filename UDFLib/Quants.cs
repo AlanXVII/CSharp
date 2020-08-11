@@ -61,11 +61,11 @@ namespace UDFLib
 
     public class Utils
     {
-        [ExcelFunction(Name = "Utils.FileExists", Description = "Function that checks if a file exists based on the provided file path")]
-        public static bool FileExists([ExcelArgument("Spot Price of Underlying")] string filepath)
-        {
-            return File.Exists(filepath);
-        }
+        //[ExcelFunction(Name = "Utils.FileExists", Description = "Function that checks if a file exists based on the provided file path")]
+        //public static bool FileExists([ExcelArgument("Spot Price of Underlying")] string filepath)
+        //{
+        //    return File.Exists(filepath);
+        //}
 
         [ExcelFunction(Name = "Utils.SubtractBusDays", Description = "Subtracts number of Business Days from specific date and return date")]
         public static DateTime SubtractBusDays([ExcelArgument("Supplied Date")] DateTime cur_date, [ExcelArgument("Number of Days")] int days)
@@ -110,8 +110,8 @@ namespace UDFLib
                         else
                             isbusday = true;
                     break;
-            }          
-            
+            }
+
             return isbusday;
         }
     }
