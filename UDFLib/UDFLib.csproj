@@ -39,6 +39,9 @@
     <Reference Include="ExcelDna.Integration, Version=1.1.0.0, Culture=neutral, PublicKeyToken=f225e9659857edbe, processorArchitecture=MSIL">
       <HintPath>packages\ExcelDna.Integration.1.1.0\lib\ExcelDna.Integration.dll</HintPath>
     </Reference>
+    <Reference Include="Extreme.Numerics, Version=7.0.14.0, Culture=neutral, PublicKeyToken=9e513770f58567b2, processorArchitecture=MSIL">
+      <HintPath>packages\Extreme.Numerics.7.0.14\lib\net46\Extreme.Numerics.dll</HintPath>
+    </Reference>
     <Reference Include="QLNet, Version=1.11.4.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\QLNet.1.11.4\lib\netstandard2.0\QLNet.dll</HintPath>
     </Reference>
